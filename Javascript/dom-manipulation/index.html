@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Manipulation</title>
+</head>
+<style type="">
+  .inline-items {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  .title {
+    text-transform: uppercase;
+    font-size: xx-large;
+    color: dimgrey;
+  }
+
+  .subtitle {
+    text-transform: capitalize;
+    font-size: large;
+    color: black;
+  }
+
+  button {
+    background-color: fuchsia;
+    border-radius: 6px;
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 12px;
+  }
+
+  .parent-element {
+    border: 1px solid red;
+    height: 60px;
+    width: 60px;
+  }
+
+  .new-element {
+    border: 1px solid blue;
+    height: 20px;
+    width: 20px;
+  }
+
+</style>
+
+<body>
+  <h1 class="title">DOM Manipulation</h1>
+  <section>
+    <h2>Add Text Content of Input</h2>
+    <input type="text" id="text-content-input">
+    <p>Text Content :</p>
+    <div class="inline-items">
+      <button onclick="setTextContent()">Add text content</button>
+      <button onclick="clearTextContent()">Clear text content</button>
+    </div>
+  </section>
+  <section>
+    <div class="parent-element">
+    </div>
+    <div class="inline-items">
+      <button onclick="addChildren()">Add</button>
+      <button onclick="removeChildren()">Remove</button>
+    </div>
+  </section>
+</body>
+
+<script type="text/javascript">
+  const paragraph = document.querySelector('p')
+
+  const parent = document.querySelector('.parent-element')
+
+  function setTextContent() {
+    const input = document.getElementById('text-content-input')
+    let value = input.value
+
+    value = `Text Content : ${value ?? ''}`
+    paragraph.textContent = value
+  }
+
+  function clearTextContent() {
+    paragraph.textContent = 'Text Content : '
+  }
+
+  function addChildren() {
+    if(parent.childNodes.length <= 1 ) {
+      const newElement = document.createElement('div')
+      newElement.setAttribute('class','new-element')
+      parent.appendChild(newElement)
+    }
+  }
+  
+  function removeChildren() {
+    const foo = document.querySelector('.new-element')
+    parent.removeChild(foo)
+  }
+</script>
+
+</html>

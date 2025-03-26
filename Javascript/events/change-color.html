@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button>change color</button>
+</body>
+<script type="text/javascript">
+
+  function random(number) {
+    return Math.floor(Math.random() * number + 1)
+  }
+
+  const button = document.querySelector('button')
+  button.addEventListener('click', onClickedButton)
+
+  function onClickedButton() {
+    const randomBgColor = `rgb(${random(255)},${random(255)},${random(255)})`
+    document.body.style.backgroundColor = randomBgColor
+  }
+
+</script>
+
+</html>
